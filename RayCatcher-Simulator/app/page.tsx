@@ -427,11 +427,6 @@ export default function SolarSimulator() {
             </Button>
           </div>
         </div>
-      </div>
-    </div>
-  )
-}
-=======
 "use client"
 
 import type React from "react"
@@ -864,4 +859,3 @@ export default function SolarSimulator() {
     </div>
   )
 }
->>>>>>> 2869a638ed4fa5bb53460728898ca9f8a6b8f3e1
