@@ -204,14 +204,14 @@ function StatCard({
   highlight?: boolean
 }) {
   return (
-    <div className={`rounded-xl p-4 ${highlight ? "bg-primary/10 border border-primary/30" : "bg-secondary"}`}>
-      <div className="flex items-center gap-2 text-muted-foreground text-sm mb-1">
+    <div className={`rounded-xl p-4 ${highlight ? "bg-orange-100 border border-orange-300" : "bg-orange-100"}`}>
+      <div className="flex items-center gap-2 text-gray-500 text-sm mb-1">
         <Icon className="w-4 h-4" />
         <span>{label}</span>
       </div>
       <div className="flex items-baseline gap-1">
-        <span className={`text-2xl font-bold ${highlight ? "text-primary" : "text-foreground"}`}>{value}</span>
-        <span className="text-muted-foreground text-sm">{unit}</span>
+        <span className={`text-2xl font-bold ${highlight ? "text-orange-600" : "text-gray-800"}`}>{value}</span>
+        <span className="text-gray-500 text-sm">{unit}</span>
       </div>
     </div>
   )
@@ -222,33 +222,33 @@ function EnergyChart({ trackingEnergy, fixedEnergy }: { trackingEnergy: number; 
   const maxEnergy = Math.max(trackingEnergy, fixedEnergy, 1)
 
   return (
-    <div className="bg-secondary rounded-xl p-4">
-      <h3 className="text-sm font-medium text-muted-foreground mb-4">Daily Energy Output</h3>
+    <div className="bg-orange-100 rounded-xl p-4">
+      <h3 className="text-sm font-medium text-gray-500 mb-4">Daily Energy Output</h3>
       <div className="flex items-end gap-6 h-32">
         <div className="flex-1 flex flex-col items-center gap-2">
-          <div className="w-full bg-muted rounded-t-md relative" style={{ height: "100%" }}>
+          <div className="w-full bg-orange-200 rounded-t-md relative" style={{ height: "100%" }}>
             <div
-              className="absolute bottom-0 w-full bg-gradient-to-t from-zinc-600 to-zinc-500 rounded-t-md transition-all duration-500"
+              className="absolute bottom-0 w-full bg-gradient-to-t from-gray-400 to-gray-500 rounded-t-md transition-all duration-500"
               style={{ height: `${(fixedEnergy / maxEnergy) * 100}%` }}
             />
           </div>
           <div className="text-center">
-            <div className="text-lg font-bold text-foreground">{fixedEnergy.toFixed(1)}</div>
-            <div className="text-xs text-muted-foreground">kWh</div>
-            <div className="text-xs text-muted-foreground mt-1">Fixed Panel</div>
+            <div className="text-lg font-bold text-gray-800">{fixedEnergy.toFixed(1)}</div>
+            <div className="text-xs text-gray-500">kWh</div>
+            <div className="text-xs text-gray-500 mt-1">Fixed Panel</div>
           </div>
         </div>
         <div className="flex-1 flex flex-col items-center gap-2">
-          <div className="w-full bg-muted rounded-t-md relative" style={{ height: "100%" }}>
+          <div className="w-full bg-orange-200 rounded-t-md relative" style={{ height: "100%" }}>
             <div
-              className="absolute bottom-0 w-full bg-gradient-to-t from-amber-600 to-orange-500 rounded-t-md transition-all duration-500"
+              className="absolute bottom-0 w-full bg-gradient-to-t from-orange-500 to-orange-400 rounded-t-md transition-all duration-500"
               style={{ height: `${(trackingEnergy / maxEnergy) * 100}%` }}
             />
           </div>
           <div className="text-center">
-            <div className="text-lg font-bold text-primary">{trackingEnergy.toFixed(1)}</div>
-            <div className="text-xs text-muted-foreground">kWh</div>
-            <div className="text-xs text-muted-foreground mt-1">Tracking</div>
+            <div className="text-lg font-bold text-orange-600">{trackingEnergy.toFixed(1)}</div>
+            <div className="text-xs text-gray-500">kWh</div>
+            <div className="text-xs text-gray-500 mt-1">Tracking</div>
           </div>
         </div>
       </div>
@@ -300,19 +300,19 @@ export default function SolarSimulator() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-4 md:p-6">
+    <div className="min-h-screen bg-gray-100 text-gray-800 p-4 md:p-6">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <header className="text-center space-y-2">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
-            <span className="text-primary">RayCatcher</span> Simulator
+            <span className="text-orange-400">RayCatcher</span> Simulator
           </h1>
         </header>
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-3 gap-6">
           {/* 3D Canvas */}
-          <div className="lg:col-span-2 bg-card rounded-2xl overflow-hidden border border-border h-[400px] md:h-[500px]">
+          <div className="lg:col-span-2 bg-white rounded-2xl overflow-hidden border border-gray-200 h-[400px] md:h-[500px]">
             <Canvas shadows camera={{ position: [5, 3, 5], fov: 50 }}>
               <Suspense fallback={null}>
                 <Scene timeMinutes={timeMinutes} />
@@ -338,18 +338,18 @@ export default function SolarSimulator() {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="bg-secondary rounded-xl p-4">
-                <div className="text-sm text-muted-foreground mb-1">Tracking Power</div>
+              <div className="bg-orange-100 rounded-xl p-4">
+                <div className="text-sm text-gray-500 mb-1">Tracking Power</div>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-bold text-primary">{trackingPower.toFixed(0)}</span>
-                  <span className="text-muted-foreground text-sm">W</span>
+                  <span className="text-2xl font-bold text-orange-600">{trackingPower.toFixed(0)}</span>
+                  <span className="text-gray-500 text-sm">W</span>
                 </div>
               </div>
-              <div className="bg-secondary rounded-xl p-4">
-                <div className="text-sm text-muted-foreground mb-1">Fixed Power</div>
+              <div className="bg-orange-100 rounded-xl p-4">
+                <div className="text-sm text-gray-500 mb-1">Fixed Power</div>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-bold text-zinc-400">{fixedPower.toFixed(0)}</span>
-                  <span className="text-muted-foreground text-sm">W</span>
+                  <span className="text-2xl font-bold text-gray-500">{fixedPower.toFixed(0)}</span>
+                  <span className="text-gray-500 text-sm">W</span>
                 </div>
               </div>
             </div>
@@ -359,14 +359,14 @@ export default function SolarSimulator() {
         </div>
 
         {/* Controls Panel */}
-        <div className="bg-card rounded-2xl border border-border p-6 space-y-6">
+        <div className="bg-white rounded-2xl border border-gray-200 p-6 space-y-6">
           <h2 className="text-lg font-semibold">Controls</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Time Control */}
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Time of Day</span>
+                <span className="text-gray-500">Time of Day</span>
                 <span className="font-medium">{minutesToTime(timeMinutes)}</span>
               </div>
               <Slider
@@ -382,7 +382,7 @@ export default function SolarSimulator() {
             {/* Speed Control */}
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Animation Speed</span>
+                <span className="text-gray-500">Animation Speed</span>
                 <span className="font-medium">{speed}x</span>
               </div>
               <Slider
@@ -409,19 +409,19 @@ export default function SolarSimulator() {
                 </>
               )}
             </Button>
-            <Button variant="secondary" onClick={handleReset} className="flex-1 min-w-[120px]">
+            <Button variant="ghost" onClick={handleReset} className="flex-1 min-w-[120px] border border-orange-200 bg-orange-50 text-orange-700 hover:bg-orange-100 hover:text-orange-800">
               <RotateCcw className="w-4 h-4 mr-2" /> Reset
             </Button>
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <Button variant="outline" onClick={() => setTimeMinutes(SUNRISE)} className="flex-1 min-w-[100px]">
+            <Button variant="ghost" onClick={() => setTimeMinutes(SUNRISE)} className="flex-1 min-w-[100px] border border-orange-200 bg-orange-50 text-orange-700 hover:bg-orange-100 hover:text-orange-800">
               <Sunrise className="w-4 h-4 mr-2" /> Sunrise
             </Button>
-            <Button variant="outline" onClick={() => setTimeMinutes(720)} className="flex-1 min-w-[100px]">
+            <Button variant="ghost" onClick={() => setTimeMinutes(720)} className="flex-1 min-w-[100px] border border-orange-200 bg-orange-50 text-orange-700 hover:bg-orange-100 hover:text-orange-800">
               <Sun className="w-4 h-4 mr-2" /> Noon
             </Button>
-            <Button variant="outline" onClick={() => setTimeMinutes(SUNSET)} className="flex-1 min-w-[100px]">
+            <Button variant="ghost" onClick={() => setTimeMinutes(SUNSET)} className="flex-1 min-w-[100px] border border-orange-200 bg-orange-50 text-orange-700 hover:bg-orange-100 hover:text-orange-800">
               <Sunset className="w-4 h-4 mr-2" /> Sunset
             </Button>
           </div>

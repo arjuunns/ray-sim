@@ -2,7 +2,7 @@
     script: typeof document === "object" ? document.currentScript : undefined,
     chunks: [
   "static/chunks/[root-of-the-server]__b723d613._.css",
-  "static/chunks/ded83__pnpm_7243227f._.js"
+  "static/chunks/OneDrive_Desktop_ray-sim_RayCatcher-Simulator_c830d399._.js"
 ],
     source: "dynamic"
 });
